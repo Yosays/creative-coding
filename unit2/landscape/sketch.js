@@ -15,7 +15,7 @@ function setup() {
   //noLoop();
   //background(220);
   colorStart = color(255,0,0);
-  colorEnd = color(0,0,255);
+  colorEnd = color(0,0,155);
 
 }
 function draw() {
@@ -35,19 +35,19 @@ function draw() {
 
  
   let noiseScale = 0.05;
-  strokeWeight(3);
+  strokeWeight(4);
 
 
 
-for (let x = 0; x < width; x+= 5){
-    for (let y = 0; y < height; y+= 5){
+for (let x = 0; x < width; x+= 1){
+    for (let y = 0; y < height; y+= 1){
       
     
       let noiseValue = noise(x * noiseScale, y * noiseScale);
       let offsetX = noiseValue * 10;
       let offsetY = noiseValue * 1000;
       
-      let blendAmount = map(noiseValue, 0, 1, 0, 1);
+      let blendAmount = map(y / height, 0, 1, 0, 1);
 
       /*let c1 = random(155);
       let c2 = random(1);
@@ -55,6 +55,8 @@ for (let x = 0; x < width; x+= 5){
       */
       let blendedColor = lerpColor(colorStart, colorEnd, blendAmount);
 
+      let fill_color = lerpColor(colorStart,colorEnd, blendAmount / 10);
+      fill(fill_color);
       stroke(blendedColor);
       point(x + offsetX, y + offsetY);
       
