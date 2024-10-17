@@ -47,7 +47,7 @@ for (let x = 0; x < width; x+= 1){
       let offsetX = noiseValue * 10;
       let offsetY = noiseValue * 1000;
       
-      let blendAmount = map(y / height, 0, 1, 0, 1);
+      let blendAmount = map(y, 0, height, 0, 1);
 
       /*let c1 = random(155);
       let c2 = random(1);
@@ -55,8 +55,7 @@ for (let x = 0; x < width; x+= 1){
       */
       let blendedColor = lerpColor(colorStart, colorEnd, blendAmount);
 
-      let fill_color = lerpColor(colorStart,colorEnd, blendAmount / 10);
-      fill(fill_color);
+      
       stroke(blendedColor);
       point(x + offsetX, y + offsetY);
       
