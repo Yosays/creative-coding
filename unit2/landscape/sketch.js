@@ -35,19 +35,19 @@ function draw() {
 
  
   let noiseScale = 0.05;
-  strokeWeight(4);
+  strokeWeight(6);
 
 
 
-for (let x = 0; x < width; x+= 1){
-    for (let y = 0; y < height; y+= 1){
+for (let x = 0; x < width; x+= 2){
+    for (let y = 0; y < height; y+= 2){
       
     
       let noiseValue = noise(x * noiseScale, y * noiseScale);
-      let offsetX = noiseValue * 10;
-      let offsetY = noiseValue * 1000;
+      let offsetX = noiseValue * 1000;
+      let offsetY = noiseValue * 100;
       
-      let blendAmount = map(y, 0, height, 0, 1);
+      let blendAmount = map(y / height, 0, 1, 0, 1);
 
       /*let c1 = random(155);
       let c2 = random(1);
