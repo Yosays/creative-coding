@@ -27,16 +27,16 @@ function draw() {
   background(220);
 
   // Check for edge collision for the first circle
-  if (x < 25 || x > width - 25) xspeed *= -1;
-  if (y < 25 || y > height - 25) yspeed *= -1;
+  if (x < 26 || x > width - 26) xspeed *= -1;
+  if (y < 26 || y > height - 26) yspeed *= -1;
 
   // Check for edge collision for the second circle
-  if (newX < 25 || newX > width - 25) newXspeed *= -1;
-  if (newY < 25 || newY > height - 25) newYspeed *= -1;
+  if (newX < 26 || newX > width - 26) newXspeed *= -1;
+  if (newY < 26 || newY > height - 26) newYspeed *= -1;
 
   // Check for edge collision for the third circle
-  if (thirdX < 25 || thirdX > width - 25) thirdXspeed *= -1;
-  if (thirdY < 25 || thirdY > height - 25) thirdYspeed *= -1;
+  if (thirdX < 26 || thirdX > width - 26) thirdXspeed *= -1;
+  if (thirdY < 26 || thirdY > height - 26) thirdYspeed *= -1;
 
   // Check for collision between circle 1 and circle 2
   let distance1_2 = dist(x, y, newX, newY);
