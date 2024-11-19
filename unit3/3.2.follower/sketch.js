@@ -1,6 +1,6 @@
 let x = 0;
 let y = 0;
-let speedfactor = 0.05; // Adjust this to control how quickly the image follows the mouse
+let speedfactor = 0.05; // 
 let score = 0;
 let img;
 
