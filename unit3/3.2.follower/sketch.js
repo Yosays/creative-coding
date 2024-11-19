@@ -10,7 +10,7 @@ let img;
 
 
 function preload(){
-img = loadImage('images/Braiyn.jpg');
+img = loadImage('https://yosays.github.io/creative-coding/unit3/3.2.follower/Braiyn.jpg');
 }
 
 function setup() {
