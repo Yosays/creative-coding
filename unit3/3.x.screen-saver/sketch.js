@@ -27,7 +27,7 @@ function draw() {
     triangle(x1, y1, x2, y2, x3, y3);
   }
 
-  // Optional: Add a fading effect to the background
+  // Fade effect
   noStroke();
   fill(0, 10); // Semi-transparent black overlay
   rect(0, 0, width, height);
