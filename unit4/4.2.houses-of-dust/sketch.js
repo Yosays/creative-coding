@@ -1,6 +1,6 @@
 let poem = '';
-let yPos = 800; // Initial Y position (starts offscreen)
-let speed = 3; // Speed of scrolling
+let yPos = 900; // Initial Y position (starts offscreen)
+let speed = 4; // Speed of scrolling
 let newPoemTimer = 0; // Timer to control when to generate a new poem
 
 
