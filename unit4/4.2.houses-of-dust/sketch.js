@@ -62,6 +62,3 @@ function draw() {
    yPos = height; // Reset to start position offscreen for the next one
  }
 }
-
-
-
