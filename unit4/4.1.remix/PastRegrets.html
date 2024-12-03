@@ -1,0 +1,73 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!--
+Lede
+
+Copyright (c) 2012 Nick Montfort <nickm@nickm.com>
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved. This file is offered as-is,
+without any warranty.
+-->
+<style type="text/css">
+/* <![CDATA[ */
+body {
+ background: #a38583;
+ color: #571902;
+ margin: 0 0 0 24pt;
+ font-family: Optima 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ font-size: 13pt;
+}
+a {
+ color: #117;
+ text-decoration: none;
+}
+/* ]]> */
+</style>
+<script type="text/javascript">
+var t = 0;
+var absurd_situation = ["When", "Look", "But", "Late", "Always", "Mistakes", "Happy", "Accidents"];
+var sad_descriptor = ["Perhaps", "Regret", "Anyways", "Never", "Will", "Boondocks", "Existed"];
+var nationality = ["How", "Didhe", "thedudee", "I…", "nevermind" , "brainrot", "cause..", "of...", "nevermind"];
+function rand_range(max) {
+    "use strict";
+    return Math.floor(Math.random() * (max + 1));
+}
+function fresh(array) {
+    "use strict";
+    var index = rand_range(array.length - 2) + 1, selection = array[index];
+    array[index] = array[0];
+    array[0] = selection;
+    return selection;
+}
+function story() {
+    "use strict";
+    var last, lede, main = document.getElementById('main');
+    if (t <= 12) {
+        t += 4;
+    } else {
+        main.removeChild(document.getElementById('main').firstChild);
+    }
+    last = document.createElement('div');
+    last.appendChild(document.createElement('br'));
+    lede =   fresh(absurd_situation) + ", " + fresh(sad_descriptor) + " " + fresh(nationality) + " " ;
+    last.appendChild(document.createTextNode(lede));
+    main.appendChild(last);
+}
+function produce_stories() {
+    "use strict";
+    story();
+    setInterval(story, 5000);
+}</script>
+  <title>Lede</title>
+</head>
+<body onload="produce_stories();">
+</div>
+<div id="main"></div>
+</body>
+</html>
