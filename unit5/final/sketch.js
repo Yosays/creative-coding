@@ -3,51 +3,55 @@ let speedfactor = 0.05; // Speed of followers
 let score = 0;
 let img;
 let safeZone; // Safe zone object
+let img1;
 
 function preload() {
   img = loadImage('https://yosays.github.io/creative-coding/unit3/3.2.follower/Braiyn.jpg');
+  img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/beast_boy_twerk_by_kiddo06_dftnmbv-pre.jpg');
 }
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1660, 900); // Make canvas fit the full window
   // Initialize with one follower
   followers.push({ x: random(width), y: random(height) });
   createSafeZone(); // Create the initial safe zone
 }
 
 function draw() {
+  background('black'); // Set the game background
+
   // Check for game win or loss
   if (score >= 20) {
-    // Winning condition
     background('green');
     textSize(50);
     fill('white');
-    text("WINNER!!!!", width / 2 - 150, height / 2);
+    textAlign(CENTER, CENTER);
+    text("WINNER!!!!", width / 2, height / 2 - 30);
     textSize(30);
-    text("Final Score: " + score, width / 2 - 100, height / 2 + 50);
+    text("Final Score: " + score, width / 2, height / 2 + 20);
     noLoop(); // Stop the draw loop
     return;
   } else if (score <= -200) {
-    // Losing condition
-    background('red');
+    image(img1, 0, 0, width, height); // Set img1 as the background
+    textSize(100);
+    fill('pink');
+    textAlign(CENTER, CENTER);
+    text("GAME OVER!", width / 2, height / 2 - 30);
     textSize(50);
-    fill('white');
-    text("GAME OVER!", width / 2 - 150, height / 2);
-    textSize(30);
-    text("Final Score: " + score, width / 2 - 100, height / 2 + 50);
+    text("Final Score: " + score, width / 2, height / 2 + 60);
     noLoop(); // Stop the draw loop
     return;
   }
 
-  background('black');
-
   // Display score
   textSize(30);
   fill('white');
-  text("Score: " + score, 50, 50);
+  textAlign(LEFT, TOP);
+  text("Score: " + score, 20, 20);
 
   // Draw the safe zone
-  fill('white');
+  fill('pink');
+  noStroke();
   ellipse(safeZone.x, safeZone.y, safeZone.radius * 2);
 
   // Loop through each follower and update their position
@@ -74,7 +78,7 @@ function draw() {
 function mousePressed() {
   let d = dist(mouseX, mouseY, safeZone.x, safeZone.y);
   if (d < safeZone.radius) {
-    score ++; // Increase score
+    score++; // Increase score
     createSafeZone(); // Create a new safe zone
   }
 }
@@ -86,4 +90,15 @@ function createSafeZone() {
     y: random(50, height - 50),
     radius: 50 // Radius of the safe zone
   };
+}
+
+// Adjust canvas size and reposition elements when the window is resized
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight); // Adjust canvas to new window size
+  // Adjust safe zone and follower positions to stay within bounds
+  for (let i = 0; i < followers.length; i++) {
+    followers[i].x = constrain(followers[i].x, 0, width);
+    followers[i].y = constrain(followers[i].y, 0, height);
+  }
+  createSafeZone(); // Recreate safe zone
 }
