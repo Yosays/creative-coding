@@ -1,5 +1,5 @@
 let followers = []; // Array to store follower positions
-let speedfactor = 0.08; // Speed of followers
+let speedfactor = 0.05; // Speed of followers
 let score = 0;
 let img;
 let safeZone1, safeZone2; // Two safe zone objects
