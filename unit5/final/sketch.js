@@ -1,20 +1,24 @@
 let followers = []; // Array to store follower positions
-let speedfactor = 0.05; // Speed of followers
+let speedfactor = 0.1; // Speed of followers
 let score = 0;
 let img;
-let safeZone; // Safe zone object
+let safeZone1, safeZone2; // Two safe zone objects
 let img1;
+let img2;
+let lastFollowerAddTime = 0; // Track last time a follower was added
+let followerAddInterval = 100; // Interval to add followers (5 seconds)
 
 function preload() {
   img = loadImage('https://yosays.github.io/creative-coding/unit3/3.2.follower/Braiyn.jpg');
   img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/beast_boy_twerk_by_kiddo06_dftnmbv-pre.jpg');
+  img2 = loadImage('https://yosays.github.io/creative-coding/unit5/final/chill%20guy.jpeg');
 }
 
 function setup() {
   createCanvas(1660, 900); // Make canvas fit the full window
   // Initialize with one follower
   followers.push({ x: random(width), y: random(height) });
-  createSafeZone(); // Create the initial safe zone
+  createSafeZones(); // Create the initial safe zones
 }
 
 function draw() {
@@ -22,11 +26,11 @@ function draw() {
 
   // Check for game win or loss
   if (score >= 20) {
-    background('green');
+    background(img2);
     textSize(50);
     fill('white');
     textAlign(CENTER, CENTER);
-    text("WINNER!!!!", width / 2, height / 2 - 30);
+    text("WIENNER!!!!", width / 2, height / 2 - 30);
     textSize(30);
     text("Final Score: " + score, width / 2, height / 2 + 20);
     noLoop(); // Stop the draw loop
@@ -49,10 +53,18 @@ function draw() {
   textAlign(LEFT, TOP);
   text("Score: " + score, 20, 20);
 
-  // Draw the safe zone
+  // Draw the safe zones
   fill('pink');
   noStroke();
-  ellipse(safeZone.x, safeZone.y, safeZone.radius * 2);
+  ellipse(safeZone1.x, safeZone1.y, safeZone1.radius * 2);
+  ellipse(safeZone2.x, safeZone2.y, safeZone2.radius * 2);
+
+  // Add a new follower every 5 seconds (if below max limit)
+  let currentTime = millis();
+  if (currentTime - lastFollowerAddTime > followerAddInterval && followers.length < 10) {
+    followers.push({ x: random(width), y: random(height) });
+    lastFollowerAddTime = currentTime;
+  }
 
   // Loop through each follower and update their position
   for (let i = 0; i < followers.length; i++) {
@@ -69,23 +81,54 @@ function draw() {
     let d = dist(follower.x, follower.y, mouseX, mouseY);
     if (d < 25) {
       score--; // Decrease score
-      followers.push({ x: random(width), y: random(height) }); // Add a new follower
     }
   }
 }
 
-// Check if the mouse is clicked inside the safe zone
+// Check if the mouse is clicked inside either safe zone
 function mousePressed() {
-  let d = dist(mouseX, mouseY, safeZone.x, safeZone.y);
-  if (d < safeZone.radius) {
+  let d1 = dist(mouseX, mouseY, safeZone1.x, safeZone1.y);
+  let d2 = dist(mouseX, mouseY, safeZone2.x, safeZone2.y);
+
+  if (d1 < safeZone1.radius) {
     score++; // Increase score
-    createSafeZone(); // Create a new safe zone
+    createSafeZone(1); // Relocate safe zone 1
+
+    // Remove a follower if there are too many
+    if (followers.length > 1) {
+      followers.pop(); // Remove the last follower
+    }
+  }
+
+  if (d2 < safeZone2.radius) {
+    score++; // Increase score
+    createSafeZone(2); // Relocate safe zone 2
+
+    // Remove a follower if there are too many
+    if (followers.length > 1) {
+      followers.pop(); // Remove the last follower
+    }
   }
 }
 
-// Function to create a new random safe zone
-function createSafeZone() {
-  safeZone = {
+// Function to create both safe zones initially
+function createSafeZones() {
+  safeZone1 = createNewSafeZone();
+  safeZone2 = createNewSafeZone();
+}
+
+// Function to relocate a specific safe zone
+function createSafeZone(zoneNumber) {
+  if (zoneNumber === 1) {
+    safeZone1 = createNewSafeZone();
+  } else if (zoneNumber === 2) {
+    safeZone2 = createNewSafeZone();
+  }
+}
+
+// Function to create a new safe zone with random position
+function createNewSafeZone() {
+  return {
     x: random(50, width - 50), // Ensure it's not too close to the edges
     y: random(50, height - 50),
     radius: 50 // Radius of the safe zone
@@ -100,5 +143,5 @@ function windowResized() {
     followers[i].x = constrain(followers[i].x, 0, width);
     followers[i].y = constrain(followers[i].y, 0, height);
   }
-  createSafeZone(); // Recreate safe zone
+  createSafeZones(); // Recreate safe zones
 }
