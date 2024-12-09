@@ -7,6 +7,7 @@ let img1;
 let img2;
 let lastFollowerAddTime = 0; // Track last time a follower was added
 let followerAddInterval = 5000; // Interval to add followers (5 seconds)
+let myFont;
 
 function preload() {
   img = loadImage('https://yosays.github.io/creative-coding/unit3/3.2.follower/Braiyn.jpg');
@@ -48,6 +49,7 @@ function draw() {
   }
 
   // Display score
+  text
   textSize(30);
   fill('white');
   textAlign(LEFT, TOP);
