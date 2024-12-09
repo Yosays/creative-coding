@@ -6,7 +6,7 @@ let safeZone1, safeZone2; // Two safe zone objects
 let img1;
 let img2;
 let lastFollowerAddTime = 0; // Track last time a follower was added
-let followerAddInterval = 100; // Interval to add followers (5 seconds)
+let followerAddInterval = 5000; // Interval to add followers (5 seconds)
 
 function preload() {
   img = loadImage('https://yosays.github.io/creative-coding/unit3/3.2.follower/Braiyn.jpg');
@@ -25,7 +25,7 @@ function draw() {
   background('black'); // Set the game background
 
   // Check for game win or loss
-  if (score >= 20) {
+  if (score >= 100) {
     background(img2);
     textSize(50);
     fill('white');
@@ -91,7 +91,7 @@ function mousePressed() {
   let d2 = dist(mouseX, mouseY, safeZone2.x, safeZone2.y);
 
   if (d1 < safeZone1.radius) {
-    score++; // Increase score
+    score = score + 10; // Increase score
     createSafeZone(1); // Relocate safe zone 1
 
     // Remove a follower if there are too many
@@ -101,7 +101,7 @@ function mousePressed() {
   }
 
   if (d2 < safeZone2.radius) {
-    score++; // Increase score
+    score = score + 10; // Increase score
     createSafeZone(2); // Relocate safe zone 2
 
     // Remove a follower if there are too many
