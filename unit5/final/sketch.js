@@ -12,7 +12,7 @@ let myFont; // New font style for score
 function preload() {
   img = loadImage('https://yosays.github.io/creative-coding/unit5/final/mmob.jpg');
   img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/deathscreen.jpg');
-  img2 = loadImage('https://yosays.github.io/creative-coding/unit5/final/chill%20guy.jpeg');
+  // img2 = loadImage('https://yosays.github.io/creative-coding/unit5/final/chill%20guy.jpeg');
   myFont = loadFont('https://yosays.github.io/creative-coding/unit5/final/PressStart2P-Regular.ttf');
 }
 
