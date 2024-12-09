@@ -7,12 +7,13 @@ let img1;
 let img2;
 let lastFollowerAddTime = 0; // Track last time a follower was added
 let followerAddInterval = 5000; // Interval to add followers (5 seconds)
-let myFont;
+let myFont; // New font style for score
 
 function preload() {
   img = loadImage('https://yosays.github.io/creative-coding/unit3/3.2.follower/Braiyn.jpg');
   img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/beast_boy_twerk_by_kiddo06_dftnmbv-pre.jpg');
   img2 = loadImage('https://yosays.github.io/creative-coding/unit5/final/chill%20guy.jpeg');
+  myFont = loadFont('https://yosays.github.io/creative-coding/unit5/final/PressStart2P-Regular.ttf');
 }
 
 function setup() {
@@ -51,9 +52,10 @@ function draw() {
   // Display score
   text
   textSize(30);
+  textFont(myFont);
   fill('white');
   textAlign(LEFT, TOP);
-  text("Score: " + score, 20, 20);
+  text("Score: "+ score, 20, 20);
 
   // Draw the safe zones
   fill('pink');
