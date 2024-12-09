@@ -10,8 +10,8 @@ let followerAddInterval = 5000; // Interval to add followers (5 seconds)
 let myFont; // New font style for score
 
 function preload() {
-  img = loadImage('https://yosays.github.io/creative-coding/unit5/final/Sansmob.webp');
-  img1 = loadImage('https://yosays.github.io/creative-coding/unit5/unit5/unit5/final/Sleepsans.jpg');
+  img = loadImage('https://yosays.github.io/creative-coding/unit5/final/mmob.jpg');
+  // img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/Sleep sans.jpg');
   img2 = loadImage('https://yosays.github.io/creative-coding/unit5/final/chill%20guy.jpeg');
   myFont = loadFont('https://yosays.github.io/creative-coding/unit5/final/PressStart2P-Regular.ttf');
 }
@@ -24,7 +24,7 @@ function setup() {
 }
 
 function draw() {
-  background('black'); // Set the game background
+  background('#121211'); // Set the game background
 
   // Check for game win or loss
   if (score >= 100) {
@@ -55,7 +55,7 @@ function draw() {
   textFont(myFont);
   fill('white');
   textAlign(LEFT, TOP);
-  text("Score: "+ score, 20, 20);
+  text("Score: " + score, 20, 20);
 
   // Draw the safe zones
   fill('pink');
