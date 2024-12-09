@@ -10,8 +10,8 @@ let followerAddInterval = 5000; // Interval to add followers (5 seconds)
 let myFont; // New font style for score
 
 function preload() {
-  img = loadImage('https://yosays.github.io/creative-coding/unit3/3.2.follower/Braiyn.jpg');
-  img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/beast_boy_twerk_by_kiddo06_dftnmbv-pre.jpg');
+  img = loadImage('https://yosays.github.io/creative-coding/unit5/final/Sans mob.webp');
+  img1 = loadImage('https://yosays.github.io/creative-coding/unit5/unit5/final/Sans.gif');
   img2 = loadImage('https://yosays.github.io/creative-coding/unit5/final/chill%20guy.jpeg');
   myFont = loadFont('https://yosays.github.io/creative-coding/unit5/final/PressStart2P-Regular.ttf');
 }
