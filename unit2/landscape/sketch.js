@@ -4,8 +4,6 @@ function setup() {
 }
 
 
-
-
 // At first I want to use points to along the canvas and fill in between them to create my landscape but 
 // after multiple attempts I couldn't get anywhere. I knew I wanted to capture a mountain like look
 // along complemntary pink background
