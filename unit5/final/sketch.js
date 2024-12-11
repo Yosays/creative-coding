@@ -10,10 +10,10 @@ let followerAddInterval = 5000; // Interval to add followers (5 seconds)
 let myFont; // New font style for score
 
 function preload() {
-  img = loadImage('https://yosays.github.io/creative-coding/unit5/final/mmob.jpg');
-  img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/deathscreen.jpg');
-  // img2 = loadImage('https://yosays.github.io/creative-coding/unit5/final/chill%20guy.jpeg');
-  myFont = loadFont('https://yosays.github.io/creative-coding/unit5/final/PressStart2P-Regular.ttf');
+  img = loadImage('https://yosays.github.io/creative-coding/unit5/final/mmob.jpg'); // Follower sprite
+  img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/deathscreen.jpg'); // Loser screen
+  // img2 = loadImage('https://yosays.github.io/creative-coding/unit5/final/chillguy.jpeg'); <--- Original winner screen I changed my mind
+  myFont = loadFont('https://yosays.github.io/creative-coding/unit5/final/PressStart2P-Regular.ttf'); // New font style I uploaded
 }
 
 function setup() {
@@ -27,24 +27,24 @@ function draw() {
   background('#121211'); // Set the game background
 
   // Check for game win or loss
-  if (score >= 100) {
-    background(img2);
+  if (score >= 150) {
+    background('black');
     textSize(50);
     fill('white');
     textAlign(CENTER, CENTER);
-    text("WIENNER!!!!", width / 2, height / 2 - 30);
+    text("WIENNER!!!!", width / 2, height / 2 - 50);
     textSize(30);
     text("Final Score: " + score, width / 2, height / 2 + 20);
     noLoop(); // Stop the draw loop
     return;
-  } else if (score <= -200) {
+  } else if (score <= -10) {
     image(img1, 0, 0, width, height); // Set img1 as the background
     textSize(100);
     fill('pink');
     textAlign(CENTER, CENTER);
-    text("GAME OVER!", width / 2, height / 2 - 30);
+    text("GAME OVER!", width / 2, height / 2 - 68);
     textSize(50);
-    text("Final Score: " + score, width / 2, height / 2 + 60);
+    text("Final Score: " + score, width / 2, height / 2 + 63);
     noLoop(); // Stop the draw loop
     return;
   }
@@ -99,7 +99,7 @@ function mousePressed() {
     createSafeZone(1); // Relocate safe zone 1
 
     // Remove a follower if there are too many
-    if (followers.length > 1) {
+    if (followers.length > 10) {
       followers.pop(); // Remove the last follower
     }
   }

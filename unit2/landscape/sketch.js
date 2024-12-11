@@ -1,68 +1,46 @@
-//function preload(){
-  // load the image from a file
-	//img = loadImage();
-//}
-/*
-let color1 = 155; // Define color limits
-let color2 = 1; // Define color limits
-let color3 = 10; // Define color limits
-*/
-
 function setup() {
-
-  // create the canvas
   createCanvas(800, 800);
-  //noLoop();
-  //background(220);
-  colorStart = color(255,0,0);
-  colorEnd = color(0,0,155);
-
+  noLoop();
 }
+
+
+
+
+// At first I want to use points to along the canvas and fill in between them to create my landscape but 
+// after multiple attempts I couldn't get anywhere. I knew I wanted to capture a mountain like look
+// along complemntary pink background
+
+
 function draw() {
-  
-  
-  //strokeWeight(1);
-
-  //for (let i = 0; i < 100; i++) {
-    //let x = random(width);
-    //let y = random(height);
-
-    //stroke (random(255), random(255), random(255));
-    //point(x, y);
-  //}
+  // Draw the gradient background
+  for (let y = 0; y < height; y++) {
+    let blendAmount = map(y, 0, height, 0, 1);
+    let bgColor = lerpColor(color(252, 228, 236), color(211, 233, 248), blendAmount); // Soft pink to pale blue
+    stroke(bgColor);
+    line(0, y, width, y);
+  }
 
 
+  // Draw grey mountain-like layers
+  let layerCount = 6;
+  let noiseScale = 0.01; // Scale for noise
+  for (let i = 0; i < layerCount; i++) {
+    let yOffset = i * 120; // Space layers apart
+    let mountainColor = lerpColor(color(50), color(200), i / layerCount); // Shades of grey
+    fill(mountainColor);
+    noStroke();
 
- 
-  let noiseScale = 0.05;
-  strokeWeight(6);
+
+    beginShape();
+    vertex(0, height); // Start at the bottom-left
+    for (let x = 0; x <= width; x += 10) {
+      let y = height * 0.5 + yOffset + map(noise(x * noiseScale, i * noiseScale), 0, 1, -100, 100);
+      vertex(x, y); // Create vertices for mountain line
+    }
+    vertex(width, height); // End at the bottom-right
+    endShape(CLOSE); // Close the shape to fill it
+  }
+}
 
 
 
-for (let x = 0; x < width; x+= 2){
-    for (let y = 0; y < height; y+= 2){
-      
-    
-      let noiseValue = noise(x * noiseScale, y * noiseScale);
-      let offsetX = noiseValue * 1000;
-      let offsetY = noiseValue * 100;
-      
-      let blendAmount = map(y / height, 0, 1, 0, 1);
-
-      /*let c1 = random(155);
-      let c2 = random(1);
-      let c3 = random(10);
-      */
-      let blendedColor = lerpColor(colorStart, colorEnd, blendAmount);
-
-      
-      stroke(blendedColor);
-      point(x + offsetX, y + offsetY);
-      
-      
-  // render the image
-  //image(img,10,10,100,100);
-          }
-        }
-      }
-    
