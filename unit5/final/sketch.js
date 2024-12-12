@@ -18,13 +18,13 @@ function preload() {
 
 function setup() {
   createCanvas(1660, 900); // Make canvas fit the full window
-  // Initialize with one follower
+  // Make sure the game starts with one follower
   followers.push({ x: random(width), y: random(height) });
   createSafeZones(); // Create the initial safe zones
 }
 
 function draw() {
-  background('#121211'); // Set the game background
+  background('#121211'); // Set the game background to something similar to black so you can see the follower clearly
 
   // Check for game win or loss
   if (score >= 150) {
@@ -32,13 +32,13 @@ function draw() {
     textSize(50);
     fill('white');
     textAlign(CENTER, CENTER);
-    text("WIENNER!!!!", width / 2, height / 2 - 50);
+    text("WINNER!!!!", width / 2, height / 2 - 50);
     textSize(30);
     text("Final Score: " + score, width / 2, height / 2 + 20);
     noLoop(); // Stop the draw loop
     return;
   } else if (score <= -10) {
-    image(img1, 0, 0, width, height); // Set img1 as the background
+    image(img1, 0, 0, width, height); // Set img1 as the background if you lose
     textSize(100);
     fill('pink');
     textAlign(CENTER, CENTER);
@@ -49,7 +49,7 @@ function draw() {
     return;
   }
 
-  // Display score
+  // Display score top left
   text
   textSize(30);
   textFont(myFont);
@@ -57,7 +57,7 @@ function draw() {
   textAlign(LEFT, TOP);
   text("Score: " + score, 20, 20);
 
-  // Draw the safe zones
+  // Draw pink circles as safe zones
   fill('pink');
   noStroke();
   ellipse(safeZone1.x, safeZone1.y, safeZone1.radius * 2);
@@ -70,18 +70,18 @@ function draw() {
     lastFollowerAddTime = currentTime;
   }
 
-  // Loop through each follower and update their position
+  // Loop through each follower and update positions in the inizilized above
   for (let i = 0; i < followers.length; i++) {
     let follower = followers[i];
 
-    // Gradually move towards the mouse position
+    // Code to make follower track mouse cursor / Player
     follower.x += (mouseX - follower.x) * speedfactor;
     follower.y += (mouseY - follower.y) * speedfactor;
 
     // Draw the follower
     image(img, follower.x - 25, follower.y - 25, 50, 50);
 
-    // Check if a follower catches the mouse
+    // If statement to check if follower touches the cursor
     let d = dist(follower.x, follower.y, mouseX, mouseY);
     if (d < 25) {
       score--; // Decrease score
@@ -89,7 +89,7 @@ function draw() {
   }
 }
 
-// Check if the mouse is clicked inside either safe zone
+// if statement to check if user clicks within the safe zone
 function mousePressed() {
   let d1 = dist(mouseX, mouseY, safeZone1.x, safeZone1.y);
   let d2 = dist(mouseX, mouseY, safeZone2.x, safeZone2.y);
@@ -98,7 +98,7 @@ function mousePressed() {
     score = score + 10; // Increase score
     createSafeZone(1); // Relocate safe zone 1
 
-    // Remove a follower if there are too many
+    // Control the amount of followers
     if (followers.length > 10) {
       followers.pop(); // Remove the last follower
     }
@@ -108,7 +108,7 @@ function mousePressed() {
     score = score + 10; // Increase score
     createSafeZone(2); // Relocate safe zone 2
 
-    // Remove a follower if there are too many
+    // Control the amount of followers
     if (followers.length > 1) {
       followers.pop(); // Remove the last follower
     }
