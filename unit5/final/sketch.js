@@ -78,7 +78,7 @@ function draw() {
   if (currentTime - lastFollowerAddTime > followerAddInterval && followers.length < 10) {
     followers.push({ x: random(width), y: random(height) });
     lastFollowerAddTime = currentTime;
-    speedfactor += .005;
+    speedfactor += .0075;
   }
 
   // Loop through each follower and update positions in the inizilized above
