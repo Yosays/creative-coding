@@ -1,4 +1,5 @@
 // I'm having trouble loading my code so I'm making this change to trouble shoot/ debug
+// I'm having trouble loading my code so I'm making this change to trouble shoot/ debug x2
 let followers = []; // Array to store follower positions
 let speedfactor = 0.05; // Speed of followers
 let score = 0;
