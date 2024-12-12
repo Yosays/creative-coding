@@ -101,9 +101,10 @@ function mousePressed() {
     createSafeZone(1); // Relocate safe zone 1
 
     // Control the amount of followers
-    if (followers.length > 10) {
-      followers.pop(); // Remove the last follower
-    }
+  }
+
+  if (followers.length > 10) {
+    followers.pop(); // Remove the last follower
   }
 
   if (d2 < safeZone2.radius) {
@@ -111,10 +112,12 @@ function mousePressed() {
     createSafeZone(2); // Relocate safe zone 2
 
     // Control the amount of followers
-    if (followers.length > 1) {
-      followers.pop(); // Remove the last follower
-    }
+    
   }
+}
+
+if (followers.length > 1) {
+  followers.pop(); // Remove the last follower
 }
 
 // Function to create both safe zones initially
