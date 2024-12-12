@@ -1,28 +1,61 @@
-let data = document.getElementById("source").innerText; 
-let rm = RiTa.markov(2); 
-let letter = select("#letter"); 
+// Import the RiTa.js Markov model
+let rm;
 
-
-function preload() {
-  
-}
 
 function setup() {
-  l
-  rm.addText(data);
+    noCanvas();
 
 
-  let lines = rm.generate(6); 
+   
+    rm = RiTa.markov(2);
 
 
-  letter.child(createP('My Dearest Harrington,'));
+    // Load the source text from the #source div
+    let data = document.getElementById("source").innerText;
 
 
-  for (let l = 0; l < lines.length; l++) {
-    let paragraph = createP(lines[l]);
-    letter.child(paragraph);
-  }
+    // Add the source text to the Markov model
+    rm.addText(data);
 
 
-  letter.child(createP('Sincerely,<br>Markov'));
+   
+    generateLetter();
 }
+
+// Function "generateLetter" when called adds greeting and farewell
+
+function generateLetter() {
+   
+    let lines = rm.generate(6);
+
+
+    // Find the #letter div and clear it
+    let letter = select("#letter");
+    letter.html(""); // Clear previous content
+
+
+    // Add greeting
+    letter.child(createP("My Dearest Harrington,"));
+
+
+    // Add each generated line as a paragraph
+    for (let l = 0; l < lines.length; l++) {
+        let paragraph = createP(lines[l]);
+        letter.child(paragraph);
+    }
+
+
+    // Add a farewell
+    letter.child(createP("Sincerely,<br>Markov"));
+}
+
+
+function mousePressed() {
+    // Clear the page on mouse click
+    select("#letter").remove();
+    let letter = createDiv();
+    letter.id("letter");
+    letter.parent(document.body);
+    setup();
+}
+

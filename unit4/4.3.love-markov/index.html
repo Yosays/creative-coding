@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Markov Letter Generator</title> <!-- Title of the webpage -->
+
     
-    <!-- RiTa library: -->
-    <script src="https://unpkg.com/rita@2.8.31/dist/rita.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/p5.js"></script>
+    <!-- Import RiTa.js library for text generation -->
+    <script src="https://unpkg.com/rita"></script>
 
-    <title>Love, Markov</title> 
-    <!--
-        Use this page to complete the "Love, Markov" exercise:
-        https://canvas.umw.edu/courses/1499064/assignments/11895978
-    -->  
-
-    <style type="text/css">
+    <style>
+        /* Apply styles to the entire page */
         body {
-            background-color: #334433;
-            color: white;
-            font-family: Arial, sans-serif;
+            background-color: #334433; /* Dark green background */
+            font-family: Arial, sans-serif; /* Use Arial or a sans-serif font */
+            color: white; /* White text color for better contrast */
         }
         main {
-            display: none;
-        }
-        #letter-output {
-            width: 600px;
-            padding: 2em;
-            background-color: #ccc;
-            margin-top: 2em;
-            margin-left: 2em;
+            display: none; /* Hide the main section if used */
         }
         #source {
-            display: none;
+            display: none; /* Hide the #source div (only used as a text source) */
+        }
+        #letter {
+            width: 300px; /* set the width of the page */
+            padding: 2em; 
+            background-color: #ccc; 
+            color: #000; 
+            margin: 2em auto; /* Center the letter horizontally  */
+            border-radius: 10px; /* Rounded corners of the page */
         }
     </style>
 </head>
 <body>
-    <div id="letter-output">
-        
-    </div>  
+    
+    <div id="letter"></div>
 
+    <!-- Hidden source text used by the Markov model -->
     <div id="source">
-        https://www.gutenberg.org/cache/epub/74831/pg74831.txt
+        
+        Stephen Benton and his store—Major C. D. Fellows, Judge Sherman
+        Page and Dr. Adanijah, Daniel, Gilbert and Gardner Cone—Capt.
+        Frederick A. Bolles, Salmon G. Cone, David Finch, William J.
+        Thompson, Niel Robertson, Col. Thomas Heath, A. P. Gray, M. B.
+        Jarvis, Josiah Thatcher, John Eells, and Lyman Sperry,
     </div>
 
+    
     <script src="sketch.js"></script>
 </body>
 </html>
