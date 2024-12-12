@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Safety Remix 3: Fading Instructions</title>
+
+	<!-- Safety Remix by [Yosyas Okbit]
+	Original Copyright 2019 Nick Montfort
+	Remix Copyright 2024 [Yosyas Okbit]
+	Modifications for educational purposes. Offered as-is without warranty.
+	-->
+
+	<script>
+		const title = [
+			['What pupose Just... '],
+			['', '', '', '', '', '', '', '', 'ice ', 'before-'],
+			['Evolving ', 'Learning ', 'DESTRUCTION', 'DANGER ', 'CAREFUL ',
+				'DISASTER ', 'SHELTER ', 'DOOM ', 'Crisis '],
+			['poke', 'begone', 'b4', 'looming', 'time', 'Precipice',
+				'looming', 'team', 'dung', 'semaphoro']
+		];
+		const text = [
+			[' talk ', ' chat ', ' decipher ', ' REMOVE ', ' SLIDE ', ' DISENGAGE '],
+			['RUBBER', 'ROD', 'HANDLE', 'GLASS', 'RAMPART', 'RAIL', 'WIRE'],
+			['FORCEFULLY', ' UP', ' DOWN']
+		];
+
+		function choice(array) {
+			return array[~~(Math.random() * array.length)];
+		}
+
+		function instruct() {
+			let headline = "", n, instructions = "",
+				head_div = document.getElementById("headline"),
+				inst_div = document.getElementById("instructions");
+			for (let i = 0; i < 4; i++) {
+				headline += choice(title[i]);
+			}
+			head_div.innerHTML = headline;
+			n = 2 + ~~(Math.random() * 8); // Between 2 and 10 instructions
+			for (let i = 0; i < n; i++) {
+				instructions += `<li style="opacity: ${(10 - i) / 10}">`;
+				for (let j = 0; j < 3; j++) {
+					instructions += choice(text[j]);
+				}
+				instructions += "</li>";
+			}
+			inst_div.innerHTML = instructions;
+		}
+
+		function go() {
+			instruct();
+			setInterval(instruct, 5000);
+		}
+	</script>
+</head>
+<body onload="go()" style="font-size:3.2vh; margin:7vh; font-family:sans-serif">
+	<h1 style="color:red; text-align:center">HELP</h1>
+	<h2 style="color:#331e59; text-align:center">Fading Instructions</h2>
+	<h1 id="headline" style="display:flex; justify-content:center"></h1>
+	<div style="display:flex; justify-content:center">
+		<ol id="instructions"></ol>
+	</div>
+</body>
+</html>

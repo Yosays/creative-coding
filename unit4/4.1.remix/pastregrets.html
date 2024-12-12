@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lede Remix</title>
+<style>
+  body {
+    background: #a38583;
+    color: #571902;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+  }
+  #main {
+    margin-top: 20px;
+    line-height: 1.6;
+  }
+</style>
+<script>
+  const absurdSituations = ["When", "Look", "But", "Late", "Always", "Mistakes", "Happy", "Accidents"];
+  const sadDescriptors = ["Perhaps", "Regret", "Anyways", "Never", "Will", "Boondocks", "Existed"];
+  const nationalities = ["How", "Didhe", "thedudee", "I…", "nevermind", "brainrot", "cause..", "of..."];
+
+  function getRandom(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
+  function generateStory() {
+    const mainDiv = document.getElementById('main');
+    const story = `${getRandom(absurdSituations)}, ${getRandom(sadDescriptors)} ${getRandom(nationalities)}`;
+    const newDiv = document.createElement('div');
+    newDiv.textContent = story;
+    mainDiv.appendChild(newDiv);
+
+    // Remove the first story if more than 5 are displayed
+    if (mainDiv.childNodes.length > 5) {
+      mainDiv.removeChild(mainDiv.firstChild);
+    }
+  }
+
+  function startStories() {
+    generateStory();
+    setInterval(generateStory, 5000);
+  }
+</script>
+</head>
+<body onload="startStories()">
+
+<!-- Copyright and License -->
+<!--
+Lede Remix
+
+Original Copyright (c) 2012 Nick Montfort <nickm@nickm.com>
+Remix Copyright (c) 2024 [Yosyas Okbit]
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved. This file is offered as-is,
+without any warranty.
+-->
+
+<div id="main"></div>
+
+</body>
+</html>
