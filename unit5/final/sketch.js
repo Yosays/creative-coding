@@ -1,5 +1,4 @@
-// I'm having trouble loading my code so I'm making this change to trouble shoot/ debug
-// I'm having trouble loading my code so I'm making this change to trouble shoot/ debug x2
+// I choose to use an array to keep track of the followers so I can control the amount I want on the screen at any time
 let followers = []; // Array to store follower positions
 let speedfactor = 0.05; // Speed of followers
 let score = 0;
@@ -10,6 +9,8 @@ let img2;
 let lastFollowerAddTime = 0; // Track last time a follower was added
 let followerAddInterval = 5000; // Interval to add followers (5 seconds)
 let myFont; // New font style for score
+
+
 
 function preload() {
   img = loadImage('https://yosays.github.io/creative-coding/unit5/final/mmob.jpg'); // Follower sprite
@@ -23,10 +24,12 @@ function setup() {
   // Make sure the game starts with one follower
   followers.push({ x: random(width), y: random(height) });
   createSafeZones(); // Create the initial safe zones
+  
 }
 
 function draw() {
-  background('#121211'); // Set the game background to something similar to black so you can see the follower clearly
+  background('#121211'); // Set the game background to something similar to black so you can see the follower clearly  
+
 
   // Check for game win or loss
   if (score >= 150) {
@@ -50,6 +53,7 @@ function draw() {
     noLoop(); // Stop the draw loop
     return;
   }
+  
 
   // Display score top left
   text
@@ -57,8 +61,9 @@ function draw() {
   textFont(myFont);
   fill('white');
   textAlign(LEFT, TOP);
-  text("Score: " + score, 20, 20);
-
+  // text("Score: " + score, 20, 20);
+  text("score: " + score, 20, 20);
+  
   // Draw pink circles as safe zones
   fill('pink');
   noStroke();
@@ -67,15 +72,19 @@ function draw() {
 
   // Add a new follower every 5 seconds (if below max limit)
   let currentTime = millis();
+  // I used this formula to intialize when a follower was added and subtract by current time and if it greater then the interval time
+  // it will add/push another one onto the canvas at a random width and height that I intialized it to
+  // Last minute change to also speed up the follower as 5 seconds go by
   if (currentTime - lastFollowerAddTime > followerAddInterval && followers.length < 10) {
     followers.push({ x: random(width), y: random(height) });
     lastFollowerAddTime = currentTime;
+    speedfactor += .005;
   }
 
   // Loop through each follower and update positions in the inizilized above
   for (let i = 0; i < followers.length; i++) {
     let follower = followers[i];
-
+    
     // Code to make follower track mouse cursor / Player
     follower.x += (mouseX - follower.x) * speedfactor;
     follower.y += (mouseY - follower.y) * speedfactor;
@@ -91,11 +100,14 @@ function draw() {
   }
 }
 
-// if statement to check if user clicks within the safe zone
+
 function mousePressed() {
+// I choose this distance formula because if I know where the X and Y value of the mouse cursor is
+// I can use if statements like below in the if statement and give it a resulting value
   let d1 = dist(mouseX, mouseY, safeZone1.x, safeZone1.y);
   let d2 = dist(mouseX, mouseY, safeZone2.x, safeZone2.y);
 
+// if statement to check if user clicks within the safe zone
   if (d1 < safeZone1.radius) {
     score = score + 10; // Increase score
     createSafeZone(1); // Relocate safe zone 1
@@ -128,9 +140,10 @@ function createSafeZones() {
 
 // Function to relocate a specific safe zone
 function createSafeZone(zoneNumber) {
-  if (zoneNumber === 1) {
+
+  if (zoneNumber == 1) {
     safeZone1 = createNewSafeZone();
-  } else if (zoneNumber === 2) {
+  } else if (zoneNumber == 2) {
     safeZone2 = createNewSafeZone();
   }
 }
@@ -138,10 +151,15 @@ function createSafeZone(zoneNumber) {
 // Function to create a new safe zone with random position
 function createNewSafeZone() {
   return {
-    x: random(50, width - 50), // Ensure it's not too close to the edges
+    x: random(50, width - 50), // make sure that they aren't to close the edge of the screen
     y: random(50, height - 50),
-    radius: 50 // Radius of the safe zone
+    radius: 50 
   };
+}
+
+function constrainFollower(){
+  for (let i = 0; i< followerAddInterval.length; i++)
+    followers[i].x = constrain
 }
 
 // Adjust canvas size and reposition elements when the window is resized
@@ -151,6 +169,8 @@ function windowResized() {
   for (let i = 0; i < followers.length; i++) {
     followers[i].x = constrain(followers[i].x, 0, width);
     followers[i].y = constrain(followers[i].y, 0, height);
+//https://p5js.org/reference/p5/constrain/#:~:text=Reference%20constrain()-,constrain(),a%20minimum%20and%20maximum%20value. 
+// I used this link to help me make the barrier in which the follower can follow you
   }
   createSafeZones(); // Recreate safe zones
 }
