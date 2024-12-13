@@ -2,11 +2,13 @@ function setup() {
   createCanvas(1200, 1200);
 }
 
-// 
+// This work when making it I was confused on what to call it due to it being random and 
+// originally being black and purple so I messed around with the colors and background it 
+// started to look like a dance floor they have on floors in malls using projecters leading 
+// me to call it dance floor
 
 function draw() {
   background(220);
-
 
   translate(220, 100);
 
