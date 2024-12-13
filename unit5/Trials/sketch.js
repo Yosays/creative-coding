@@ -16,9 +16,9 @@ let myFont; // New font style for score
 // when the follower increases
 
 function preload() {
-  img = loadImage('https://yosays.github.io/creative-coding/unit5/final/mmob.jpg'); // Follower sprite
-  img1 = loadImage('https://yosays.github.io/creative-coding/unit5/final/deathscreen.jpg'); // Loser screen
-  myFont = loadFont('https://yosays.github.io/creative-coding/unit5/final/PressStart2P-Regular.ttf'); // New font style I uploaded
+  img = loadImage('https://yosays.github.io/creative-coding/unit5/Trials/mmob.jpg'); // Follower sprite
+  img1 = loadImage('https://yosays.github.io/creative-coding/unit5/Trials/deathscreen.jpg'); // Loser screen
+  myFont = loadFont('https://yosays.github.io/creative-coding/unit5/Trials/PressStart2P-Regular.ttf'); // New font style I uploaded
 }
 
 function setup() {
