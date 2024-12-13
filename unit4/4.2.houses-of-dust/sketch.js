@@ -37,7 +37,7 @@ function setup() {
   frameRate(30); //https://p5js.org/reference/p5/frameRate/
   textAlign(CENTER, CENTER);
   textFont("Impact");
-  textSize(30);
+  textSize(25);
   fill(0);
 }
 
@@ -50,7 +50,7 @@ function draw() {
 
   // I used this if statement to check how long the time has passed since the last poem was generated so it resets at the
   // right y value
-  if (millis() - newPoemTimer > 3000) {
+  if (millis() - newPoemTimer > 5000) {
     poem = grammar.flatten("#origin#"); // Generate the poem based on the grammar
     newPoemTimer = millis(); // Reset timer
     yPos = height; // Reset position of the next quatrain offscreen
