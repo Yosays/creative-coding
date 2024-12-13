@@ -1,4 +1,4 @@
-// check for push
+// check for push1
 let poem = '';
 let yPos = 900; // Initial Y position (starts offscreen)
 let speed = 4; // Speed of scrolling
