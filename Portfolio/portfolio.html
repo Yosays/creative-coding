@@ -4,36 +4,102 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Projects</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .introduction {
+            margin-bottom: 20px;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .project {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .project img {
+            width: 100%;
+            max-height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .project p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            color: #007BFF;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>My GitHub Projects</h1>
-        <div class="projects">
-            <div class="project">
-                <a href="https://yosays.github.io/creative-coding/unit2/Dance-Floor/" target="_blank">
-                    <img src="image1.jpg" alt="Project 1">
-                </a>
-                <p>Project 1 - Description of project 1.</p>
-            </div>
-            <div class="project">
-                <a href="https://yosays.github.io/creative-coding/unit3/Shapless/" target="_blank">
-                    <img src="image2.jpg" alt="Project 2">
-                </a>
-                <p>Project 2 - Description of project 2.</p>
-            </div>
-            <div class="project">
-                <a href="https://yosays.github.io/creative-coding/unit3/Outer-Space/" target="_blank">
-                    <img src="image3.jpg" alt="Project 3">
-                </a>
-                <p>Project 3 - Description of project 3.</p>
-            </div>
-            <div class="project">
-                <a href="https://yosays.github.io/creative-coding/unit5/Trials/" target="_blank">
-                    <img src="image4.jpg" alt="Project 4">
-                </a>
-                <p>Project 4 - Description of project 4.</p>
-            </div>
+    <div class="introduction">
+        <h1>Welcome to My GitHub Projects</h1>
+        <p>Hi! I'm Yosyas Okbit I go by Yoshi, a passionate coder exploring the world of creative programming. Here are some of my favorite projects. Feel free to explore and let me know your thoughts!</p>
+    </div>
+    <div class="projects">
+        <div class="project">
+            <a href="https://yosays.github.io/creative-coding/unit2/Dance-Floor/" target="_blank">
+                <img src="https://yosays.github.io/creative-coding/Portfolio/Disco-Pic.png" alt="Dance Floor">
+                <p><strong>Dance Floor</strong></p>
+                <p>This is a page of little squares that interchange in color I was aiming to make it look like
+                    projector mall floor dance floors
+                </p>
+            </a>
+        </div>
+        <div class="project">
+            <a href="https://yosays.github.io/creative-coding/unit3/Shapless/" target="_blank">
+                <img src="https://yosays.github.io/creative-coding/Portfolio/Shapless-Pic.png" alt="Shapless">
+                <p><strong>Shapless</strong></p>
+                <p>This is meant to be a screensaver I wanted it to be something that had no exact outcome 
+                but still had something that a person can look forward to like anticpating what the next
+                shapes will be or how long they will stay transparent or what color they would be
+                which led to me come up with the name "Shapeless"</p>
+            </a>
+        </div>
+        <div class="project">
+            <a href="https://yosays.github.io/creative-coding/unit3/Outer-Space/" target="_blank">
+                <img src="https://yosays.github.io/creative-coding/Portfolio/Time-Pic.png" alt="Outer Space">
+                <p><strong>Outer Space</strong></p>
+                <p>This work like mentioned before is meant to be shooting stars out in space
+                I added on stars to give it a more space look which led me to call this work "Outer-Space".
+                Starting from the left they go up by each second, minute, and hour.
+                    </p>
+            </a>
+        </div>
+        <div class="project">
+            <a href="https://yosays.github.io/creative-coding/unit5/Trials/" target="_blank">
+                <img src="https://yosays.github.io/creative-coding/Portfolio/Trials-Pic.png" alt="Trials">
+                <p><strong>Trials</strong></p>
+                <p>I called this trials because they way the sprite looks and the font reminded of undertale trials but
+                    more to it also reminded me of a type of korean comic called "Manwha" which is riddled with dungeon and
+                    reincarnation genre and leveling up and getting through near death expierences which reminded of that 
+                    when the follower increases</p>
+            </a>
         </div>
     </div>
 </body>
